@@ -23,6 +23,6 @@ class CodeCommitClient(BaseAwsClient):
             **{"nextToken": next_token, "sortBy": sort_by, "order": order_by}
         )
         response = self.client.list_repositories(**data)
-        response = self._prepare_response(response)
+        response = self._prepare_response(response) 
 
         return response.get("repositories")
