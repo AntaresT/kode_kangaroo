@@ -1,3 +1,5 @@
+from ..decorators import snakecase_dict
+
 from ..clients import BaseAwsClient
 from ..choices import Choices
 
@@ -16,6 +18,7 @@ class CodeCommitClient(BaseAwsClient):
 
     service = "codecommit"
 
+    @snakecase_dict
     def list_repositories(
         self, next_token=None, sort_by=SORT_BY.REPOSITORY_NAME, order_by=ORDER.ASCENDING
     ):
