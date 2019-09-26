@@ -3,6 +3,8 @@ from datetime import datetime
 from sqlalchemy.ext.declarative import declared_attr
 from sqlalchemy import Column, Integer, DateTime
 
+from .db import Session
+
 
 class BaseModel:
 
@@ -18,3 +20,10 @@ class BaseModel:
             tablename = tablename[:-5]
 
         return tablename
+
+
+class Crud:
+    def save(self):
+        if self.id == None:
+            Session.add(self)
+        return Session.commit()
